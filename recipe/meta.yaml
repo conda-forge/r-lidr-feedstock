@@ -27,24 +27,21 @@ requirements:
     - r-base
     - r-rann
     - r-rcpp
-    - r-rcppprogress
     - r-data.table
     - r-future
     - r-gdalutils
     - r-geometry
     - r-gstat
     - r-lazyeval
-    - r-magrittr
     - r-mapedit
     - r-mapview
     - r-memoise
     - r-raster
     - r-rgeos
     - r-rgl
-    - r-rlas >=1.1.6
+    - r-rlas >=1.1.10
     - r-settings
     - r-sp
-    - r-stringr
     - posix  # [win]
     - {{native}}toolchain  # [win]
     - gcc  # [not win]
@@ -52,24 +49,21 @@ requirements:
     - r-base
     - r-rann
     - r-rcpp
-    - r-rcppprogress
     - r-data.table
     - r-future
     - r-gdalutils
     - r-geometry
     - r-gstat
     - r-lazyeval
-    - r-magrittr
     - r-mapedit
     - r-mapview
     - r-memoise
     - r-raster
     - r-rgeos
     - r-rgl
-    - r-rlas >=1.1.6
+    - r-rlas >=1.1.10
     - r-settings
     - r-sp
-    - r-stringr
     - libgcc  # [not win]
 
 test:
