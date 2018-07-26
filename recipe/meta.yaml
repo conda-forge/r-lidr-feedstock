@@ -1,4 +1,4 @@
-{% set version = "1.5.0" %}
+{% set version = "1.6.0" %}
 
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
@@ -12,25 +12,38 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/lidR_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: b03674dad52a651bdcf26959d40a4be3af780ce9acc6252aa01df69bbf1addc7
+  sha256: 42b98424630d14a6972b4a923344003a8d4c167e6c8fd021e803f2caf9d2ad14
 
 build:
   number: 0
   script: R CMD INSTALL --build .
   skip: True  # [win]
+  merge_build_host: True  # [win]
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('cxx') }}      # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-rann
     - r-rcpp
+    - r-assertive
+    - r-concaveman
     - r-data.table
     - r-future
     - r-gdalutils
     - r-geometry
+    - r-glue
     - r-gstat
     - r-lazyeval
     - r-mapedit
@@ -42,17 +55,18 @@ requirements:
     - r-rlas >=1.1.10
     - r-settings
     - r-sp
-    - posix  # [win]
-    - {{native}}toolchain  # [win]
-    - gcc  # [not win]
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-rann
     - r-rcpp
+    - r-assertive
+    - r-concaveman
     - r-data.table
     - r-future
     - r-gdalutils
     - r-geometry
+    - r-glue
     - r-gstat
     - r-lazyeval
     - r-mapedit
@@ -64,7 +78,6 @@ requirements:
     - r-rlas >=1.1.10
     - r-settings
     - r-sp
-    - libgcc  # [not win]
 
 test:
   commands:
