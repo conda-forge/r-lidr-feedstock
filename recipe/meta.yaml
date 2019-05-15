@@ -1,5 +1,4 @@
-{% set version = "1.5.0" %}
-
+{% set version = '2.0.3' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -8,80 +7,116 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: lidR_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/lidR_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: b03674dad52a651bdcf26959d40a4be3af780ce9acc6252aa01df69bbf1addc7
+    - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
+  sha256: 831340834aad43bc26ed73be45171be67f210a8eb57cebfe0c8196029fe0fd36
 
 build:
   merge_build_host: True  # [win]
-  number: 1
   script: R CMD INSTALL --build .
   skip: True  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix  # [win]
     - {{ compiler('c') }}        # [unix]
     - {{ compiler('m2w64_c') }}  # [win]
     - {{ compiler('cxx') }}        # [unix]
     - {{ compiler('m2w64_cxx') }}  # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-    - r-rann
-    - r-rcpp
+    - r-bh
+    - r-rcsf
+    - r-rcpp >=0.11.0
     - r-data.table
-    - r-future
+    - r-future >=1.10.0
     - r-gdalutils
     - r-geometry
+    - r-glue
     - r-gstat
+    - r-imager
     - r-lazyeval
-    - r-mapedit
-    - r-mapview
-    - r-memoise
     - r-raster
+    - r-rgdal
     - r-rgeos
     - r-rgl
-    - r-rlas >=1.1.10
-    - r-settings
+    - r-rlas >=1.2.5
+    - r-sf
     - r-sp
   run:
     - r-base
-    - r-rann
-    - r-rcpp
+    - {{native}}gcc-libs         # [win]
+    - r-bh
+    - r-rcsf
+    - r-rcpp >=0.11.0
     - r-data.table
-    - r-future
+    - r-future >=1.10.0
     - r-gdalutils
     - r-geometry
+    - r-glue
     - r-gstat
+    - r-imager
     - r-lazyeval
-    - r-mapedit
-    - r-mapview
-    - r-memoise
     - r-raster
+    - r-rgdal
     - r-rgeos
     - r-rgl
-    - r-rlas >=1.1.10
-    - r-settings
+    - r-rlas >=1.2.5
+    - r-sf
     - r-sp
 
 test:
   commands:
-    - $R -e "library('lidR')"  # [not win]
+    - $R -e "library('lidR')"           # [not win]
     - "\"%R%\" -e \"library('lidR')\""  # [win]
 
 about:
-  home: https://cran.r-project.org/package=lidR
+  home: https://github.com/Jean-Romain/lidR
   license: GPL-3
   summary: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization.
     Read/write 'las' and 'laz' files, computation of metrics in area based approach,
     point filtering, artificial point reduction, classification from geographic data,
     normalization, individual tree segmentation and other manipulations.
+  license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
+    - conda-forge/r
     - ocefpaf
+
+# Package: lidR
+# Type: Package
+# Title: Airborne LiDAR Data Manipulation and Visualization for Forestry Applications
+# Version: 2.0.3
+# Date: 2019-05-02
+# Authors@R: c( person("Jean-Romain", "Roussel", email = "jean-romain.roussel.1@ulaval.ca", role = c("aut", "cre", "cph")), person("David", "Auty", email = "", role = c("aut", "ctb"), comment = "Reviews the documentation"), person("Florian", "De Boissieu", email = "", role = ("ctb"), comment = "Fixed bugs and improved catalog features"), person("Andrew", "Sanchez Meador", email = "", role = ("ctb"), comment = "Implemented lassnags"))
+# Description: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization. Read/write 'las' and 'laz' files, computation of metrics in area based approach, point filtering, artificial point reduction, classification from geographic data, normalization, individual tree segmentation and other manipulations.
+# URL: https://github.com/Jean-Romain/lidR
+# BugReports: https://github.com/Jean-Romain/lidR/issues
+# License: GPL-3
+# Depends: R (>= 3.1.0),methods,raster,sp
+# Imports: data.table, future (>= 1.10.0), gdalUtils, geometry, glue, grDevices, gstat, lazyeval, imager, Rcpp (>= 0.11.0), RCSF, rgeos, rgdal, rgl, rlas (>= 1.2.5), sf, stats, tools, utils
+# Suggests: EBImage, concaveman, crayon, hexbin, mapview, progress, testthat, knitr, rmarkdown
+# LazyData: true
+# RoxygenNote: 6.1.1
+# LinkingTo: BH,Rcpp
+# Encoding: UTF-8
+# ByteCompile: true
+# VignetteBuilder: knitr
+# Collate: 'LASmethods-generic.r' 'Class-LASheader.r' 'Class-LAS.r' 'Class-LAScatalog.r' 'Class-LAScluster.r' 'LASmethods-LAS.r' 'LASmethods-LAScatalog.r' 'LASmethods-LAScluster.r' 'LASmethods-LASheader.r' 'RcppExports.R' 'algo_digital_surface_model.r' 'algo_ground_segmentation.r' 'algo_points_decimation.r' 'algo_snags_segmentation.r' 'algo_spatial_interpolations.r' 'algo_tree_detection.R' 'algo_tree_segmentation.r' 'catalog_apply.r' 'catalog_fakerun.r' 'catalog_index.r' 'catalog_intersect.r' 'catalog_laxindex.r' 'catalog_makecluster.r' 'catalog_retile.r' 'catalog_select.r' 'clusters_apply.r' 'grid_canopy.r' 'grid_density.r' 'grid_hexametrics.r' 'grid_metrics.r' 'grid_metrics3d.r' 'grid_terrain.r' 'io_readLAS.r' 'io_writeANY.r' 'io_writeLAS.r' 'lascheck.r' 'lasclip.r' 'lasfilter.r' 'lasfilterdecimate.r' 'lasfilterduplicates.r' 'lasfiltersurfacepoints.r' 'lasground.r' 'lasindentify.r' 'lasmergelas.r' 'lasmergespatial.r' 'lasmetrics.r' 'lasnormalize.r' 'lasroi.r' 'lassmooth.r' 'lassnags.r' 'lastransform.r' 'lastrees.r' 'lasupdateheader.r' 'lasvoxelize.r' 'lidR-package.r' 'plot.s3.r' 'tree_detection.r' 'tree_hulls.r' 'tree_metrics.r' 'utils_assertive.r' 'utils_catalog_options.r' 'utils_colors.r' 'utils_define_constant.R' 'utils_geometry.r' 'utils_is.r' 'utils_match_chm_and_seeds.r' 'utils_metrics.r' 'utils_misc.r' 'utils_typecast.r' 'zzz.r'
+# NeedsCompilation: yes
+# Packaged: 2019-05-09 17:16:52 UTC; jr
+# Author: Jean-Romain Roussel [aut, cre, cph], David Auty [aut, ctb] (Reviews the documentation), Florian De Boissieu [ctb] (Fixed bugs and improved catalog features), Andrew Sanchez Meador [ctb] (Implemented lassnags)
+# Maintainer: Jean-Romain Roussel <jean-romain.roussel.1@ulaval.ca>
+# Repository: CRAN
+# Date/Publication: 2019-05-09 18:30:07 UTC
