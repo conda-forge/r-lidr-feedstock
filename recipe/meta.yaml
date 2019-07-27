@@ -18,7 +18,8 @@ build:
   merge_build_host: True  # [win]
   number: 2
   script: R CMD INSTALL --build .
-  skip: True  # [win]
+  # no r-rgl on osx
+  skip: True  # [osx]
   rpaths:
     - lib/R/lib/
     - lib/
