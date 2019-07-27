@@ -8,17 +8,17 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: lidR_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/lidR_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
   sha256: b03674dad52a651bdcf26959d40a4be3af780ce9acc6252aa01df69bbf1addc7
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 2
   script: R CMD INSTALL --build .
-  skip: True  # [win]
+  # no r-rgl on osx
+  skip: True  # [osx]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -81,7 +81,10 @@ about:
     Read/write 'las' and 'laz' files, computation of metrics in area based approach,
     point filtering, artificial point reduction, classification from geographic data,
     normalization, individual tree segmentation and other manipulations.
+  license_family: GPL3
+  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
 
 extra:
   recipe-maintainers:
+    - conda-forge/r
     - ocefpaf
