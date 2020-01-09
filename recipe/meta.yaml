@@ -32,41 +32,40 @@ requirements:
     - {{ compiler('m2w64_cxx') }}  # [win]
   host:
     - r-base
-    - r-rann
+    - r-bh
     - r-rcpp
-    - r-data.table
+    - r-rcpparmadillo
+    - r-data.table >=1.12.0
     - r-future
     - r-gdalutils
-    - r-geometry
-    - r-gstat
+    - r-glue
+    - r-imager
     - r-lazyeval
-    - r-mapedit
-    - r-mapview
-    - r-memoise
     - r-raster
+    - r-rcsf
     - r-rgeos
     - r-rgl
+    - r-rgdal
     - r-rlas >=1.1.10
-    - r-settings
+    - r-sf
     - r-sp
   run:
     - r-base
-    - r-rann
+    - r-bh
     - r-rcpp
-    - r-data.table
+    - r-rcpparmadillo
+    - r-data.table >=1.12.0
     - r-future
     - r-gdalutils
-    - r-geometry
-    - r-gstat
+    - r-glue
+    - r-imager
     - r-lazyeval
-    - r-mapedit
-    - r-mapview
-    - r-memoise
     - r-raster
+    - r-rcsf
     - r-rgeos
     - r-rgl
     - r-rlas >=1.1.10
-    - r-settings
+    - r-sf
     - r-sp
 
 test:
