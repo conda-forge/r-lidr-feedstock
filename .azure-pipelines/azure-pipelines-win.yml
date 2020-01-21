@@ -10,12 +10,12 @@ jobs:
   strategy:
     maxParallel: 4
     matrix:
-      win_r_base3.5.1:
-        CONFIG: win_r_base3.5.1
+      win_r_base3.5.1target_platformwin-64:
+        CONFIG: win_r_base3.5.1target_platformwin-64
         CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: True
-      win_r_base3.6:
-        CONFIG: win_r_base3.6
+      win_r_base3.6target_platformwin-64:
+        CONFIG: win_r_base3.6target_platformwin-64
         CONDA_BLD_PATH: D:\\bld\\
         UPLOAD_PACKAGES: True
   steps:
