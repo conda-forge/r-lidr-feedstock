@@ -1,4 +1,4 @@
-{% set version = "2.2.2" %}
+{% set version = "2.2.3" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,13 +10,13 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: a6473884c6c52ed31dd79dd78bf6b114fed6b9a2c94b8fc544b84da3d9052a79
+  sha256: c498d656580b631c9cb04d4119b59ed21142d41f5f62d8b47cc20c171831bf17
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   # no r-rgl on osx
-  skip: True  # [osx]
+  skip: true  # [osx]
   rpaths:
     - lib/R/lib/
     - lib/
@@ -78,13 +78,12 @@ test:
 about:
   home: https://github.com/Jean-Romain/lidR
   license: GPL-3
-  summary: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization.
-    Read/write 'las' and 'laz' files, computation of metrics in area based approach,
-    point filtering, artificial point reduction, classification from geographic data,
-    normalization, individual tree segmentation and other manipulations.
+  summary: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization. Read/write 'las' and 'laz' files, computation of metrics
+    in area based approach, point filtering, artificial point reduction, classification from geographic data, normalization, individual tree segmentation and other
+    manipulations.
   license_family: GPL3
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
 
 extra:
   recipe-maintainers:
