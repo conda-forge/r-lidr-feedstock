@@ -1,4 +1,4 @@
-{% set version = "2.2.3" %}
+{% set version = "2.2.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: c498d656580b631c9cb04d4119b59ed21142d41f5f62d8b47cc20c171831bf17
+  sha256: 49da0e0a404ea6d9335b1b3a0470a5fc85b59cc9c7ec64e48685288eaf378e0b
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   # no r-rgl on osx
   skip: true  # [osx]
   rpaths:
@@ -78,8 +78,7 @@ test:
 about:
   home: https://github.com/Jean-Romain/lidR
   license: GPL-3
-  summary: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization. Read/write 'las' and 'laz' files, computation of metrics
-    in area based approach, point filtering, artificial point reduction, classification from geographic data, normalization, individual tree segmentation and other
+  summary: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization. Read/write 'las' and 'laz' files, computation of metrics in area based approach, point filtering, artificial point reduction, classification from geographic data, normalization, individual tree segmentation and other
     manipulations.
   license_family: GPL3
   license_file:
