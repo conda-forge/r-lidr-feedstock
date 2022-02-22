@@ -1,4 +1,4 @@
-{% set version = "3.2.3" %}
+{% set version = "4.0.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: 7e72e30d33e758a11f1f7778b1b65b5da2e718350cf124407689dfdbdcda6204
+  sha256: 71a71e8efb158d8620b24374569cb1c9c1b431d2f0366499332f81721fabb3ee
 
 build:
   merge_build_host: true  # [win]
@@ -32,44 +32,39 @@ requirements:
     - {{ posix }}sed               # [win]
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
     - r-bh >=1.72.0
-    - r-rcsf
     - r-rcpp >=1.0.3
     - r-rcpparmadillo
+    - r-classint
     - r-data.table >=1.12.0
-    - r-future
-    - r-gdalutils
-    - r-geometry
     - r-glue
     - r-lazyeval
     - r-raster
-    - r-rgdal
-    - r-rgeos
     - r-rgl
-    - r-rlas >=1.3.5
+    - r-rlas >=1.5.0
     - r-sf
-    - r-sp >=1.4.2
+    - r-sp
+    - r-stars
+    - r-terra
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
-    - r-rcsf
     - r-rcpp >=1.0.3
     - r-rcpparmadillo
+    - r-classint
     - r-data.table >=1.12.0
-    - r-future
-    - r-gdalutils
-    - r-geometry
     - r-glue
     - r-lazyeval
     - r-raster
-    - r-rgdal
-    - r-rgeos
     - r-rgl
-    - r-rlas >=1.3.5
+    - r-rlas >=1.5.0
     - r-sf
-    - r-sp >=1.4.2
+    - r-sp
+    - r-stars
+    - r-terra
 
 test:
   commands:
