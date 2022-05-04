@@ -1,4 +1,4 @@
-{% set version = "4.0.0" %}
+{% set version = "4.0.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: 71a71e8efb158d8620b24374569cb1c9c1b431d2f0366499332f81721fabb3ee
+  sha256: 11eda7ef3a7f375f10c7e535c56be56234d85cd6e164f83efa8c0f66a1b6d62d
 
 build:
   merge_build_host: true  # [win]
