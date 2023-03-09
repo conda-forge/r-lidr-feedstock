@@ -1,11 +1,22 @@
+About r-lidr-feedstock
+======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-lidr-feedstock/blob/main/LICENSE.txt)
+
 About r-lidr
-============
+------------
 
 Home: https://github.com/Jean-Romain/lidR
 
 Package license: GPL-3.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-lidr-feedstock/blob/main/LICENSE.txt)
+Summary: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization. Read/write 'las' and 'laz' files, computation of metrics in area based approach, point filtering, artificial point reduction, classification from geographic data, normalization, individual tree segmentation and other manipulations.
+About r-lidr
+------------
+
+Home: https://github.com/Jean-Romain/lidR
+
+Package license: GPL-3.0-only
 
 Summary: Airborne LiDAR (Light Detection and Ranging) interface for data manipulation and visualization. Read/write 'las' and 'laz' files, computation of metrics in area based approach, point filtering, artificial point reduction, classification from geographic data, normalization, individual tree segmentation and other manipulations.
 
