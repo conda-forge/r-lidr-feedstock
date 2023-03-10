@@ -11,6 +11,9 @@ source:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
   sha256: 793b3e832ae9a30d06c3f57f4b943e83a923bee38519b5c44db842db885b678d
+  patches:
+    ## this is from upstream, so expect to drop next release
+    - patches/0001-cxx14-win.patch
 
 build:
   merge_build_host: true  # [win]
