@@ -1,4 +1,4 @@
-{% set version = "4.0.3" %}
+{% set version = "4.0.4" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,14 +10,14 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: 793b3e832ae9a30d06c3f57f4b943e83a923bee38519b5c44db842db885b678d
+  sha256: 9380ca5538ef30f369d2ef640e51e92e1d87c13b3a3c7fe39e6f46b3edf3a57d
   patches:
     ## this is from upstream, so expect to drop next release
     - patches/0001-cxx14-win.patch
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
