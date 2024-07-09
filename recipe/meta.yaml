@@ -1,4 +1,4 @@
-{% set version = "4.1.1" %}
+{% set version = "4.1.2" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: ad42fd1f5cdee682b08d783a8ff531eb228f4cdd91f7c8cfecd6c95a362e1c58
+  sha256: e452c35c189fb8bcfedb53b2cb1184a6feee11c2f3ccf1db4b161a9ce700a9eb
   patches:
     ## this is from upstream, so expect to drop next release
     - patches/0001-cxx14-win.patch
@@ -25,7 +25,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}          # [not win]
+    - {{ stdlib("c") }}            # [not win]
     - {{ compiler('m2w64_c') }}    # [win]
+    - {{ stdlib("m2w64_c") }}      # [win]
     - {{ compiler('cxx') }}        # [not win]
     - {{ compiler('m2w64_cxx') }}  # [win]
     - {{ posix }}filesystem        # [win]
