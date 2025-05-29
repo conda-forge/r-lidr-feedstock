@@ -10,9 +10,6 @@ source:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
   sha256: 65bcdd84161442b05a632183e95e83e5005e4eaf44037b96ba7c469fb072fa27
-  patches:
-    ## this is from upstream, so expect to drop next release
-    - patches/0001-cxx14-win.patch
 
 build:
   number: 0
@@ -38,17 +35,15 @@ requirements:
   host:
     - r-base
     - r-bh >=1.72.0
+    - r-rcpp >=1.0.3
+    - r-rcpparmadillo
     - r-classint
     - r-data.table >=1.12.0
     - r-glue
     - r-lazyeval
-    - r-raster
-    - r-rcpp >=1.0.3
-    - r-rcpparmadillo
     - r-rgl
-    - r-rlas >=1.5.0
+    - r-rlas >=1.8.2
     - r-sf
-    - r-sp
     - r-stars
     - r-terra >=1.5_17
     - libblas
@@ -57,17 +52,16 @@ requirements:
     - llvm-openmp                  # [osx]
   run:
     - r-base
+    #- r-bh >=1.72.0
+    - r-rcpp >=1.0.3
+    - r-rcpparmadillo
     - r-classint
     - r-data.table >=1.12.0
     - r-glue
     - r-lazyeval
-    - r-raster
-    - r-rcpp >=1.0.3
-    - r-rcpparmadillo
     - r-rgl
-    - r-rlas >=1.5.0
+    - r-rlas >=1.8.2
     - r-sf
-    - r-sp
     - r-stars
     - r-terra >=1.5_17
 
