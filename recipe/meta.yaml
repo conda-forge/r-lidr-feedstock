@@ -1,4 +1,4 @@
-{% set version = "4.1.2" %}
+{% set version = "4.2.2" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,13 +9,13 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: e452c35c189fb8bcfedb53b2cb1184a6feee11c2f3ccf1db4b161a9ce700a9eb
+  sha256: 025c15a772371b532397e7412c42382f9f4bc6909e2aa1c740b37cdf5e190dd2
   patches:
     ## this is from upstream, so expect to drop next release
     - patches/0001-cxx14-win.patch
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
