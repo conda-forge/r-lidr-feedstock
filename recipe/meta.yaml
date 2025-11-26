@@ -10,9 +10,6 @@ source:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
   sha256: 025c15a772371b532397e7412c42382f9f4bc6909e2aa1c740b37cdf5e190dd2
-  patches:
-    ## this is from upstream, so expect to drop next release
-    - patches/0001-cxx14-win.patch
 
 build:
   number: 0
