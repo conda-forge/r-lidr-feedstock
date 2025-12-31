@@ -35,17 +35,16 @@ requirements:
   host:
     - r-base
     - r-bh >=1.72.0
+    - r-rcpp >=1.0.3
+    - r-rcpparmadillo
+    - r-rnanoflann
     - r-classint
     - r-data.table >=1.12.0
     - r-glue
     - r-lazyeval
-    - r-raster
-    - r-rcpp >=1.0.3
-    - r-rcpparmadillo
     - r-rgl
-    - r-rlas >=1.5.0
+    - r-rlas >=1.8.2
     - r-sf
-    - r-sp
     - r-stars
     - r-terra >=1.5_17
     - libblas
@@ -54,17 +53,17 @@ requirements:
     - llvm-openmp                  # [osx]
   run:
     - r-base
+    #- r-bh >=1.72.0
+    - r-rcpp >=1.0.3
+    - r-rcpparmadillo
+    - r-rnanoflann
     - r-classint
     - r-data.table >=1.12.0
     - r-glue
     - r-lazyeval
-    - r-raster
-    - r-rcpp >=1.0.3
-    - r-rcpparmadillo
     - r-rgl
-    - r-rlas >=1.5.0
+    - r-rlas >=1.8.2
     - r-sf
-    - r-sp
     - r-stars
     - r-terra >=1.5_17
 
