@@ -1,4 +1,4 @@
-{% set version = "4.2.2" %}
+{% set version = "4.2.3" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: 025c15a772371b532397e7412c42382f9f4bc6909e2aa1c740b37cdf5e190dd2
+  sha256: a0a138b1d88aa450f1f8649b80cb92ad697bf20dfd14b5f0cb8dc6bf6fcca759
 
 build:
   number: 0
@@ -20,7 +20,7 @@ build:
     - '*/R.dll'        # [win]
     - '*/Rblas.dll'    # [win]
     - '*/Rlapack.dll'  # [win]
-  skip: True  # [win]
+  skip: true  # [win]
 
 requirements:
   build:
