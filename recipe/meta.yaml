@@ -1,4 +1,4 @@
-{% set version = "4.3.0" %}
+{% set version = "4.3.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/lidR_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/lidR/lidR_{{ version }}.tar.gz
-  sha256: 74d7a33a57a3a7925c2bb8317f5131c3cf5d4c1ebd34e815634cd06a1a3a504d
+  sha256: 3a20c56ca0f8ebf825c8dd0a9592241c37ce4ea3c1d373e31aaad71e18975ff7
 
 build:
   number: 0
